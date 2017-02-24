@@ -1,0 +1,14 @@
+version: '2'
+services:
+  jenkinsmaster:
+    build: jenkins-master
+    volumes_from: 
+      - jenkinsdata
+    ports:
+      - 8081:8080
+
+  jenkinsdata:
+    build: jenkins-data
+    volumes:
+      -  ./log/jenkins:/var/log/jenkins
+      -  ./jenkins_home:/var/jenkins_home
